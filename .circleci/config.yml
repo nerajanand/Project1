@@ -1,0 +1,40 @@
+version: 2.1
+
+jobs:
+  build_and_push:
+    docker:
+      - image: cimg/base:stable
+    environment:
+      IMAGE_NAME: animal-photos
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run:
+          name: Build Docker image
+          command: |
+            docker build \
+              -t "$DOCKERHUB_USERNAME/$IMAGE_NAME:${CIRCLE_SHA1}" \
+              -t "$DOCKERHUB_USERNAME/$IMAGE_NAME:latest" \
+              .
+
+      - run:
+          name: Login to Docker Hub
+          command: |
+            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+
+      - run:
+          name: Push image to Docker Hub
+          command: |
+            docker push "$DOCKERHUB_USERNAME/$IMAGE_NAME:${CIRCLE_SHA1}"
+            docker push "$DOCKERHUB_USERNAME/$IMAGE_NAME:latest"
+
+workflows:
+  build_push_on_main:
+    jobs:
+      - build_and_push:
+          filters:
+            branches:
+              only: main
