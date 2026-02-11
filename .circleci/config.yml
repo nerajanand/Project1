@@ -1,6 +1,17 @@
 version: 2.1
 
 jobs:
+  build_only:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker image (feature branch)
+          command: |
+            docker build -t animal-photos:ci .
+
   build_and_push:
     docker:
       - image: cimg/base:stable
@@ -8,7 +19,6 @@ jobs:
       IMAGE_NAME: animal-photos
     steps:
       - checkout
-
       - setup_remote_docker:
           docker_layer_caching: true
 
@@ -32,8 +42,13 @@ jobs:
             docker push "$DOCKERHUB_USERNAME/$IMAGE_NAME:latest"
 
 workflows:
-  build_push_on_main:
+  ci:
     jobs:
+      - build_only:
+          filters:
+            branches:
+              ignore: main
+
       - build_and_push:
           filters:
             branches:
