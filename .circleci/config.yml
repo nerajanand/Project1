@@ -40,6 +40,10 @@ jobs:
           command: |
             docker push "$DOCKERHUB_USERNAME/$IMAGE_NAME:${CIRCLE_SHA1}"
             docker push "$DOCKERHUB_USERNAME/$IMAGE_NAME:latest"
+      - run:
+          name: Deploy to Render
+          command: |
+           curl -X POST "$RENDER_DEPLOY_HOOK"
 
 workflows:
   ci:
