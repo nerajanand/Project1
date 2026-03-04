@@ -1,8 +1,4 @@
-# Use nginx to serve static content
 FROM nginx:alpine
-
-# Copy everything in the project into nginx web root
-COPY . /usr/share/nginx/html/
-
-# Expose web port
+COPY index.html /usr/share/nginx/html/index.html
+COPY images/ /usr/share/nginx/html/images/
 EXPOSE 80
