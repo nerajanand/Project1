@@ -116,21 +116,6 @@ Developer → GitHub → CircleCI\
 This represents a complete CI/CD pipeline.
 
 ------------------------------------------------------------------------
-
-##  How to Run Locally
-
-### Build Image
-
-docker build -t animal-photos .
-
-### Run Container
-
-docker run -p 8080:80 animal-photos
-
-Visit:
-
-http://localhost:8080
-
 ------------------------------------------------------------------------
 
 ##  Concepts Demonstrated
