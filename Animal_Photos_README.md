@@ -1,6 +1,6 @@
-# 🐾 Animal Photos -- CI/CD Docker Deployment Project
+# Animal Photos -- CI/CD Docker Deployment Project
 
-## 📌 Project Overview
+##  Project Overview
 
 This project demonstrates a complete CI/CD pipeline using:
 
@@ -15,7 +15,7 @@ this project is on implementing a real-world DevOps workflow.
 
 ------------------------------------------------------------------------
 
-## 🌐 Live Demo
+##  Live Demo
 
 Production URL (update with your actual Render URL):
 
@@ -23,11 +23,11 @@ https://animal-photos.onrender.com
 
 
 
-## 🖼 Application Details
+##  Application Details
 
 
 
-## 🐳 Docker Setup
+##  Docker Setup
 
 ### Dockerfile
 
@@ -45,7 +45,7 @@ EXPOSE 80
 
 ------------------------------------------------------------------------
 
-## 🔄 CI/CD Workflow (CircleCI)
+##  CI/CD Workflow (CircleCI)
 
 Branch-based deployment strategy:
 
@@ -62,7 +62,7 @@ Branch-based deployment strategy:
 
 ------------------------------------------------------------------------
 
-## ⚙️ CircleCI Configuration
+##  CircleCI Configuration
 
 Located at:
 
@@ -70,11 +70,11 @@ Located at:
 
 ### Two Jobs
 
-1️⃣ build_only\
+1️ build_only\
 Triggered on feature branches\
 Builds Docker image only.
 
-2️⃣ build_and_push\
+2️ build_and_push\
 Triggered only on main
 
 Steps: 1. Build Docker image 2. Login to Docker Hub 3. Push image (SHA
@@ -82,7 +82,7 @@ tag + latest) 4. Trigger Render deploy hook
 
 ------------------------------------------------------------------------
 
-## 🔐 Environment Variables (CircleCI)
+##  Environment Variables (CircleCI)
 
 Configured in:
 
@@ -98,7 +98,7 @@ These are securely stored and not committed to the repository.
 
 ------------------------------------------------------------------------
 
-## 🚀 Deployment Flow
+##  Deployment Flow
 
 Feature branch push:
 
@@ -117,7 +117,7 @@ This represents a complete CI/CD pipeline.
 
 ------------------------------------------------------------------------
 
-## 🧪 How to Run Locally
+##  How to Run Locally
 
 ### Build Image
 
@@ -133,7 +133,7 @@ http://localhost:8080
 
 ------------------------------------------------------------------------
 
-## 📚 Concepts Demonstrated
+##  Concepts Demonstrated
 
 -   Docker containerization
 -   Remote Docker in CI
